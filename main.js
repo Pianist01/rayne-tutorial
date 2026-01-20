@@ -1,5 +1,7 @@
 console.log('This is working');
 
+const body = document.querySelector('body');
+
 const oneTitle = document.querySelector('h1');
 
 const button = document.querySelector('.button');
@@ -37,6 +39,11 @@ function generateNextPage() {
     button.addEventListener('click', (e) => {
         e.preventDefault();
         console.log('Button clicked');
+        body.style.backgroundColor = 'white';
+        button.style.opacity = 0;
+        setTimeout(() => {
+            button.style.display = 'none';
+        }, 4000);
     });
 }
 

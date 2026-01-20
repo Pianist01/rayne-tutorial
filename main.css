@@ -57,6 +57,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: background-color 2s ease-in-out;
 }
 
 main {
@@ -92,4 +93,6 @@ button {
   height: 30px;
   justify-self: center;
   align-self: center;
+  opacity: 1;
+  transition: opacity 3s ease-in-out;
 }
