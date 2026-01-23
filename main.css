@@ -64,12 +64,18 @@ main {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(2, 1fr);
+  grid-column: 1/4;
+  grid-row: 2/3;
+  height: 100%;
 }
 
 h1 {
   color: white;
   opacity: 0;
   animation: fadeInOut 5s ease-in-out infinite;
+  grid-column: 1/2;
+  grid-row: 1/2;
+  align-self: end;
 }
 
 @keyframes fadeInOut {
@@ -92,7 +98,21 @@ button {
   width: 60px;
   height: 30px;
   justify-self: center;
-  align-self: center;
+  align-self: start;
   opacity: 1;
   transition: opacity 3s ease-in-out;
+}
+
+/* CLASS THAT WILL BE ADDED TO TABLE GENERATING BUTTON TO MAKE IT DISAPPEAR */
+.disappear {
+  opacity: 0;
+  transition: opacity 1s ease-in-out
+}
+
+.table {
+  border-collapse: collapse;
+  border: 2px solid blue;
+  grid-column: 1/2;
+  grid-row: 1/3;
+  align-self: center;
 }

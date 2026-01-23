@@ -1,6 +1,7 @@
 console.log('This is working');
 
 const body = document.querySelector('body');
+const main = document.querySelector('main');
 
 const oneTitle = document.querySelector('h1');
 
@@ -41,10 +42,92 @@ function generateNextPage() {
         console.log('Button clicked');
         body.style.backgroundColor = 'white';
         button.style.opacity = 0;
+        generateNewButton();
+        changeToGrid();
         setTimeout(() => {
             button.style.display = 'none';
+            oneTitle.style.display = 'none';
         }, 4000);
     });
 }
 
 generateNextPage();
+
+const newButton = document.createElement('button');
+
+newButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    generateTable();
+    newButton.classList.remove('new-button');
+    newButton.classList.add('disappear');
+});
+function generateNewButton() {
+    newButton.classList.add('new-button');
+    newButton.textContent = 'Click Here To Generate Table';
+
+    main.append(newButton);
+}
+
+function changeToGrid() {
+    body.style.removeProperty('display');
+    body.style.display = 'grid';
+    body.style.gridTemplateColumns = 'repeat(3, 1fr)';
+    body.style.gridTemplateRows = '.5fr 1fr .5fr';
+}
+
+const tableCategory = ['', 'Name:', 'Address:', 'City:', 'State:', 'ZIP:', 'Phone Number:', 'Email:', 'Current Balance:'];
+const tableData = [
+    {
+        id: 1,
+        name: 'Peppi',
+        address: '1410 S Joane Way',
+        city: 'Santa Ana',
+        state: 'CA',
+        zip: '92704',
+        phone: '(323) 916-2224',
+        email: 'peppi67@gmail.com'
+    },
+    {
+        id: 2,
+        name: 'Leva',
+        address: '621 W Alton Ave',
+        city: 'Santa Ana',
+        state: 'CA',
+        zip: '92707',
+        phone: '(949) 323-6767',
+        email: 'imleva69@yahoo.com'
+    },
+    {
+        id: 3,
+        name: 'Borrego',
+        address: '1033 W Glenwood Pl',
+        city: 'Santa Ana',
+        state: 'CA',
+        zip: '92707',
+        phone: '(714) 278-5964',
+        email: 'borregohouse67@gmail.com'
+    }
+];
+
+function generateTable() {
+    const table = document.createElement('table');
+    table.classList.add('table');
+    const tableCaption = document.createElement('caption');
+    tableCaption.textContent = 'This is a table to test adding customer information';
+    const tableHead = document.createElement('thead');
+    const tableRow = document.createElement('tr');
+    for(let i = 0; i <= 8; i++) {
+        const tableHeader = document.createElement('th');
+        tableHeader.textContent = tableCategory[i + 1];
+        tableRow.append(tableHeader);
+    }
+
+    const tableBody = document.createElement('tbody');
+    tableBody.classList.add('table-body');
+    
+
+    tableHead.append(tableRow);
+    table.append(tableCaption, tableHead);
+
+    main.append(table);
+}
