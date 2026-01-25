@@ -75,7 +75,7 @@ function changeToGrid() {
     body.style.gridTemplateRows = '.5fr 1fr .5fr';
 }
 
-const tableCategory = ['', 'Name:', 'Address:', 'City:', 'State:', 'ZIP:', 'Phone Number:', 'Email:', 'Current Balance:'];
+const tableCategory = ['', 'ID:', 'Name:', 'Address:', 'City:', 'State:', 'ZIP:', 'Phone Number:', 'Email:', 'Current Balance:'];
 const tableData = [
     {
         id: 1,
@@ -85,7 +85,8 @@ const tableData = [
         state: 'CA',
         zip: '92704',
         phone: '(323) 916-2224',
-        email: 'peppi67@gmail.com'
+        email: 'peppi67@gmail.com',
+        balance: '350'
     },
     {
         id: 2,
@@ -95,7 +96,8 @@ const tableData = [
         state: 'CA',
         zip: '92707',
         phone: '(949) 323-6767',
-        email: 'imleva69@yahoo.com'
+        email: 'imleva69@yahoo.com',
+        balance: '20'
     },
     {
         id: 3,
@@ -105,7 +107,8 @@ const tableData = [
         state: 'CA',
         zip: '92707',
         phone: '(714) 278-5964',
-        email: 'borregohouse67@gmail.com'
+        email: 'borregohouse67@gmail.com',
+        balance: '67'
     }
 ];
 
@@ -116,7 +119,7 @@ function generateTable() {
     tableCaption.textContent = 'This is a table to test adding customer information';
     const tableHead = document.createElement('thead');
     const tableRow = document.createElement('tr');
-    for(let i = 0; i <= 8; i++) {
+    for(let i = 0; i <= 9; i++) {
         const tableHeader = document.createElement('th');
         tableHeader.textContent = tableCategory[i + 1];
         tableRow.append(tableHeader);
@@ -124,10 +127,20 @@ function generateTable() {
 
     const tableBody = document.createElement('tbody');
     tableBody.classList.add('table-body');
-    
+    tableData.forEach(item => {
+        console.log(item.name);
+        const dataRow = document.createElement('tr');
+        Object.values(item).forEach(value => {
+            const dataCell = document.createElement('td');
+            dataCell.textContent = value;
+            dataRow.append(dataCell);
+        });
+        tableBody.append(dataRow);
+    });
 
     tableHead.append(tableRow);
-    table.append(tableCaption, tableHead);
+    table.append(tableCaption, tableHead, tableBody);
 
     main.append(table);
 }
+console.log(tableData[1].name);
