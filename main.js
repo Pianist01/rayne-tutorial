@@ -7,7 +7,7 @@ const oneTitle = document.querySelector('h1');
 
 const button = document.querySelector('.button');
 
-button.disabled = true;
+button.disabled = false; // Button will be disabled, but for testing purposes, it is set to false. Change to true when done testing.
 
 const firstPage = ['', 'Welcome to Raynewater, whoever you are.', 'This is a tutorial to help you get started with the Raynewater software.', 'Click the button below to begin.'];
 
@@ -32,9 +32,9 @@ const changeText = setInterval(() => {
     console.log(`Index: ${index}`);
 }, 5000);
 
-setTimeout(() => {
-    button.disabled = false;
-}, 15000);
+// setTimeout(() => {
+//     button.disabled = false;  // Button will be enabled after 15 seconds, but for testing purposes, it is set to false. Change to true when done testing.
+// }, 15000);
 
 function generateNextPage() {
     button.addEventListener('click', (e) => {
@@ -44,6 +44,7 @@ function generateNextPage() {
         button.style.opacity = 0;
         generateNewButton();
         changeToGrid();
+        generateToolBar();
         setTimeout(() => {
             button.style.display = 'none';
             oneTitle.style.display = 'none';
@@ -52,6 +53,19 @@ function generateNextPage() {
 }
 
 generateNextPage();
+
+function generateToolBar() {
+    const toolBarContainer = document.createElement('div');
+    toolBarContainer.classList.add('toolbar-container');
+
+    const searchCustomerButton = document.createElement('button');
+    searchCustomerButton.classList.add('search-customer-btn');
+    searchCustomerButton.textContent = 'Search Customer';
+
+    toolBarContainer.append(searchCustomerButton);
+    body.append(toolBarContainer);
+}
+
 
 const newButton = document.createElement('button');
 
@@ -71,8 +85,8 @@ function generateNewButton() {
 function changeToGrid() {
     body.style.removeProperty('display');
     body.style.display = 'grid';
-    body.style.gridTemplateColumns = 'repeat(3, 1fr)';
-    body.style.gridTemplateRows = '.5fr 1fr .5fr';
+    body.style.gridTemplateColumns = '.6fr 2fr';
+    body.style.gridTemplateRows = '.3fr 1fr .5fr';
 }
 
 const tableCategory = ['', 'ID:', 'Name:', 'Address:', 'City:', 'State:', 'ZIP:', 'Phone Number:', 'Email:', 'Current Balance:'];
