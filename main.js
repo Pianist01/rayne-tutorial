@@ -45,6 +45,8 @@ function generateNextPage() {
         generateNewButton();
         changeToGrid();
         generateToolBar();
+        companyLogo();
+        addCustomerButton();
         setTimeout(() => {
             button.style.display = 'none';
             oneTitle.style.display = 'none';
@@ -54,18 +56,94 @@ function generateNextPage() {
 
 generateNextPage();
 
+function companyLogo() {
+    const logo = document.createElement('h2');
+    logo.classList.add('title');
+    logo.textContent = 'Raynewater';
+    body.append(logo);
+}
+
 function generateToolBar() {
     const toolBarContainer = document.createElement('div');
     toolBarContainer.classList.add('toolbar-container');
 
     const searchCustomerButton = document.createElement('button');
     searchCustomerButton.classList.add('search-customer-btn');
-    searchCustomerButton.textContent = 'Search Customer';
+    searchCustomerButton.textContent = 'Accounts';
 
-    toolBarContainer.append(searchCustomerButton);
+    const routesButton = document.createElement('button');
+    routesButton.classList.add('routes-btn');
+    routesButton.textContent = 'Routes';
+
+    toolBarContainer.append(searchCustomerButton, routesButton);
     body.append(toolBarContainer);
 }
 
+function addCustomerButton() {
+    const newCustomerButton = document.createElement('button');
+    newCustomerButton.classList.add('new-customer-btn');
+    newCustomerButton.textContent = 'Add New Customer';
+    main.append(newCustomerButton);
+}
+
+function generateNewCustomerForm() {
+    const formContainer = document.createElement('div');
+    formContainer.classList.add('new-customer-form-container');
+    const formTitle = document.createElement('header');
+    formTitle.textContent = 'New Customer';
+
+    // Form and fields
+    const customerForm = document.createElement('form');
+    const fields = document.createElement('div');
+    fields.classList.add('fields');
+
+    // All inputs will be created in this section.
+    const inputFieldOne = document.createElement('div');
+    inputFieldOne.classList.add('input-field');
+    const firstNameLabel = document.createElement('label');
+    firstNameLabel.textContent = 'First Name';
+    const firstNameInput = document.createElement('input');
+    firstNameInput.type = 'text';
+    firstNameInput.placeholder = 'First Name';
+
+    const inputFieldTwo = document.createElement('div');
+    inputFieldTwo.classList.add('input-field');
+    const lastNameLabel = document.createElement('label');
+    lastNameLabel.textContent = 'Last Name';
+    const lastNameInput = document.createElement('input');
+    lastNameInput.type = 'text';
+    lastNameInput.placeholder = 'Last Name';
+
+    const inputFieldThree = document.createElement('div');
+    inputFieldThree.classList.add('input-field');
+    const addressLabel = document.createElement('label');
+    addressLabel.textContent = 'House/Street';
+    const addressInput = document.createElement('input');
+    addressInput.type = 'text';
+    addressInput.placeholder = 'House/Street';
+
+    const inputFieldFour = document.createElement('div');
+    inputFieldFour.classList.add('input-field');
+    const cityLabel = document.createElement('label');
+    cityLabel.textContent = 'City';
+    const cityInput = document.createElement('input');
+    cityInput.type = 'text';
+    cityInput.placeholder = 'City';
+
+    // Continue from here Steven
+
+    const states = [
+        {name: 'Alaska', code: 'AK'},
+    ]
+
+    const inputFieldFive = document.createElement('div');
+    inputFieldFive.classList.add('input-field');
+    const stateLabel = document.createElement('label');
+    stateLabel.textContent = 'State';
+    const stateSelect = document.createElement('select');
+    stateSelect.add(new Option('Select your state', '', true, true));
+
+}
 
 const newButton = document.createElement('button');
 
@@ -127,6 +205,8 @@ const tableData = [
 ];
 
 function generateTable() {
+    const tableContainer = document.createElement('div');
+    tableContainer.classList.add('table-container'); 
     const table = document.createElement('table');
     table.classList.add('table');
     const tableCaption = document.createElement('caption');
@@ -154,7 +234,25 @@ function generateTable() {
 
     tableHead.append(tableRow);
     table.append(tableCaption, tableHead, tableBody);
+    tableContainer.append(table);
 
-    main.append(table);
+    main.append(tableContainer);
 }
 console.log(tableData[1].name);
+
+// Class object to create customer objects. This will be used to create new customers and add them to the table.
+class customer {
+    constructor(firstName, lastName, address, city, state, zip, phoneNumber, email1, email2, email3, balance) {
+        this.firstName = firstName,
+        this.lastName = lastName,
+        this.address = address,
+        this.city = city,
+        this.state = state,
+        this.zip = zip,
+        this.phoneNumber = phoneNumber,
+        this.email1 = email1,
+        this.email2 = email2,
+        this.email3 = email3,
+        this.balance = balance
+    };
+}
