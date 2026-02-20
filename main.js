@@ -134,6 +134,57 @@ function generateNewCustomerForm() {
 
     const states = [
         {name: 'Alaska', code: 'AK'},
+        {name: 'Alabama', code: 'AL'},
+        {name: 'Arkansas', code: 'AR'},
+        {name: 'Arizona', code: 'AZ'},
+        {name: 'California', code: 'CA'},
+        {name: 'Colorado', code: 'CO'},
+        {name: 'Connecticut', code: 'CT'},
+        {name: 'District of Columbia', code: 'DC'},
+        {name: 'Delaware', code: 'DE'},
+        {name: 'Florida', code: 'FL'},
+        {name: 'Georgia', code: 'GA'},
+        {name: 'Hawaii', code: 'HI'},
+        {name: 'Iowa', code: 'IA'},
+        {name: 'Idaho', code: 'ID'},
+        {name: 'Illinois', code: 'IL'},
+        {name: 'Indiana', code: 'IN'},
+        {name: 'Kansas', code: 'KS'},
+        {name: 'Kentucky', code: 'KY'},
+        {name: 'Louisiana', code: 'LA'},
+        {name: 'Massachusetts', code: 'MA'},
+        {name: 'Maryland', code: 'MD'},
+        {name: 'Maine', code: 'ME'},
+        {name: 'Michigan', code: 'MI'},
+        {name: 'Minnesota', code: 'MN'},
+        {name: 'Missouri', code: 'MO'},
+        {name: 'Mississippi', code: 'MS'},
+        {name: 'Montana', code: 'MT'},
+        {name: 'North Carolina', code: 'NC'},
+        {name: 'North Dakota', code: 'ND'},
+        {name: 'Nebraska', code: 'NE'},
+        {name: 'New Hampshire', code: 'NH'},
+        {name: 'New Jersey', code: 'NJ'},
+        {name: 'New Mexico', code: 'NM'},
+        {name: 'Nevada', code: 'NV'},
+        {name: 'New York', code: 'NY'},
+        {name: 'Ohio', code: 'OH'},
+        {name: 'Oklahoma', code: 'OK'},
+        {name: 'Oregon', code: 'OR'},
+        {name: 'Pennsylvania', code: 'PA'},
+        {name: 'Puerto Rico', code: 'PR'},
+        {name: 'Rhode Island', code: 'RI'},
+        {name: 'South Carolina', code: 'SC'},
+        {name: 'South Dakota', code: 'SD'},
+        {name: 'Tennessee', code: 'TN'},
+        {name: 'Texas', code: 'TX'},
+        {name: 'Utah', code: 'UT'},
+        {name: 'Virginia', code: 'VA'},
+        {name: 'Vermont', code: 'VT'},
+        {name: 'Washington', code: 'WA'},
+        {name: 'Wisconsin', code: 'WI'},
+        {name: 'West Virginia', code: 'WV'},
+        {name: 'Wyoming', code: 'WY'}
     ]
 
     const inputFieldFive = document.createElement('div');
@@ -142,6 +193,27 @@ function generateNewCustomerForm() {
     stateLabel.textContent = 'State';
     const stateSelect = document.createElement('select');
     stateSelect.add(new Option('Select your state', '', true, true));
+
+    states.forEach(state => {
+        const option = new Option(state.name, state.code);
+        stateSelect.add(option);
+    });
+
+    const inputFieldSix = document.createElement('div');
+    inputFieldSix.classList.add('input-field');
+    const zipLabel = document.createElement('label');
+    zipLabel.textContent = 'ZIP Code';
+    const zipInput = document.createElement('input');
+    zipInput.type = 'number';
+    zipInput.placeholder = 'ZIP Code';
+
+    const inputFieldSeven = document.createElement('div');
+    inputFieldSeven.classList.add('input-field');
+    const phoneLabel = document.createElement('label');
+    phoneLabel.textContent = 'Phone Number';
+    const phoneInput = document.createElement('input');
+    phoneInput.type = 'tel';
+    phoneInput.placeholder = 'Phone Number';
 
 }
 
