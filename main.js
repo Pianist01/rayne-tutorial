@@ -71,6 +71,11 @@ function generateToolBar() {
     searchCustomerButton.classList.add('search-customer-btn');
     searchCustomerButton.textContent = 'Accounts';
 
+    searchCustomerButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        formContainer.classList.
+    });
+
     const routesButton = document.createElement('button');
     routesButton.classList.add('routes-btn');
     routesButton.textContent = 'Routes';
@@ -83,11 +88,20 @@ function addCustomerButton() {
     const newCustomerButton = document.createElement('button');
     newCustomerButton.classList.add('new-customer-btn');
     newCustomerButton.textContent = 'Add New Customer';
+
+    newCustomerButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        generateNewCustomerForm();
+        newCustomerButton.classList.remove('new-customer-btn');
+        newCustomerButton.classList.add('remove-btn');
+    });
     main.append(newCustomerButton);
 }
 
+let formContainer;
+
 function generateNewCustomerForm() {
-    const formContainer = document.createElement('div');
+    formContainer = document.createElement('div');
     formContainer.classList.add('new-customer-form-container');
     const formTitle = document.createElement('header');
     formTitle.textContent = 'New Customer';
@@ -130,8 +144,7 @@ function generateNewCustomerForm() {
     cityInput.type = 'text';
     cityInput.placeholder = 'City';
 
-    // Continue from here Steven
-
+    // Array of states to be used in state select dropdown.
     const states = [
         {name: 'Alaska', code: 'AK'},
         {name: 'Alabama', code: 'AL'},
@@ -214,6 +227,27 @@ function generateNewCustomerForm() {
     const phoneInput = document.createElement('input');
     phoneInput.type = 'tel';
     phoneInput.placeholder = 'Phone Number';
+
+    const inputFieldEight = document.createElement('div');
+    inputFieldEight.classList.add('input-field');
+    const emailLabel = document.createElement('label');
+    emailLabel.textContent = 'Email';
+    const emailInput = document.createElement('input');
+    emailInput.type = 'email';
+    emailInput.placeholder = 'Email';
+
+    fields.append(inputFieldOne, inputFieldTwo, inputFieldThree, inputFieldFour, inputFieldFive, inputFieldSix, inputFieldSeven, inputFieldEight);
+    inputFieldOne.append(firstNameLabel, firstNameInput);
+    inputFieldTwo.append(lastNameLabel, lastNameInput);
+    inputFieldThree.append(addressLabel, addressInput);
+    inputFieldFour.append(cityLabel, cityInput);
+    inputFieldFive.append(stateLabel, stateSelect);
+    inputFieldSix.append(zipLabel, zipInput);
+    inputFieldSeven.append(phoneLabel, phoneInput);
+    inputFieldEight.append(emailLabel, emailInput);
+    customerForm.append(fields);
+    formContainer.append(formTitle, customerForm);
+    main.append(formContainer);
 
 }
 
